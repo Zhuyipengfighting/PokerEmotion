@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import StreamingResponse, JSONResponse
 from pydantic import BaseModel
 from typing import Optional
-from core.guide_redis import AiGuide, UserInput
+from core.emotion_2 import AiGuide, UserInput
 import asyncio
 
 app = FastAPI()

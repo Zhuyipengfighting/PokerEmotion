@@ -18,7 +18,7 @@ load_dotenv()
 class UserInput(BaseModel):
     session_id: str
     input: str
-    output: Optional[str]
+    output: Optional[str]=''
     emotion: Optional[str] = None
 class AiGuide:
     agent_executor = None
@@ -112,6 +112,6 @@ if __name__ == "__main__":
     print("AI Response 1:", response1)
 
     response2 = aiguide.invoke_with_history(
-        UserInput(session_id="test", input="你觉得我现在该做什么", emotion="sad",output='')
+        UserInput(session_id="test", input="我现在应该干什么？", emotion="难过，愧疚",output='')
     )
     print("AI Response 2:", response2)
