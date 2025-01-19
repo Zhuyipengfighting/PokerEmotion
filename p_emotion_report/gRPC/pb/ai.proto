@@ -1,0 +1,17 @@
+syntax = "proto3";
+package ai;
+message UserInput {
+  string session_id = 1;
+  repeated EmotionData input = 2;
+}
+message EmotionData {
+  string date = 1;
+  map<string, float> emotions = 2;
+}
+message AIOutput {
+  string session_id = 1;
+  string report = 2;
+}
+service AiGuideService {
+  rpc GetEmotionalReport (UserInput) returns (AIOutput);
+}

@@ -1,3 +1,6 @@
+# Author: Taoismimmortal
+# Time: 2024/1/6
+# Title: FastAPI about AI
 from humanfriendly.terminal import output
 from pydantic import BaseModel
 from langchain.agents import create_tool_calling_agent, AgentExecutor

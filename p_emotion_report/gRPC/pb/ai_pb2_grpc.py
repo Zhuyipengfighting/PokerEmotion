@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from gRPC.pb import ai_pb2 as gRPC_dot_pb_dot_ai__pb2
+from gRPC.pb import ai_pb2 as ai__pb2
 
 GRPC_GENERATED_VERSION = '1.69.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in gRPC/pb/ai_pb2_grpc.py depends on'
+        + f' but the generated code in ai_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -34,17 +34,17 @@ class AiGuideServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ChatStream = channel.stream_stream(
-                '/aiemtion.AiGuideService/ChatStream',
-                request_serializer=gRPC_dot_pb_dot_ai__pb2.UserInput.SerializeToString,
-                response_deserializer=gRPC_dot_pb_dot_ai__pb2.AIResponse.FromString,
+        self.GetEmotionalReport = channel.unary_unary(
+                '/ai.AiGuideService/GetEmotionalReport',
+                request_serializer=ai__pb2.UserInput.SerializeToString,
+                response_deserializer=ai__pb2.AIOutput.FromString,
                 _registered_method=True)
 
 
 class AiGuideServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ChatStream(self, request_iterator, context):
+    def GetEmotionalReport(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -53,16 +53,16 @@ class AiGuideServiceServicer(object):
 
 def add_AiGuideServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ChatStream': grpc.stream_stream_rpc_method_handler(
-                    servicer.ChatStream,
-                    request_deserializer=gRPC_dot_pb_dot_ai__pb2.UserInput.FromString,
-                    response_serializer=gRPC_dot_pb_dot_ai__pb2.AIResponse.SerializeToString,
+            'GetEmotionalReport': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetEmotionalReport,
+                    request_deserializer=ai__pb2.UserInput.FromString,
+                    response_serializer=ai__pb2.AIOutput.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'aiemtion.AiGuideService', rpc_method_handlers)
+            'ai.AiGuideService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('aiemtion.AiGuideService', rpc_method_handlers)
+    server.add_registered_method_handlers('ai.AiGuideService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -70,7 +70,7 @@ class AiGuideService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def ChatStream(request_iterator,
+    def GetEmotionalReport(request,
             target,
             options=(),
             channel_credentials=None,
@@ -80,12 +80,12 @@ class AiGuideService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_stream(
-            request_iterator,
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            '/aiemtion.AiGuideService/ChatStream',
-            gRPC_dot_pb_dot_ai__pb2.UserInput.SerializeToString,
-            gRPC_dot_pb_dot_ai__pb2.AIResponse.FromString,
+            '/ai.AiGuideService/GetEmotionalReport',
+            ai__pb2.UserInput.SerializeToString,
+            ai__pb2.AIOutput.FromString,
             options,
             channel_credentials,
             insecure,
