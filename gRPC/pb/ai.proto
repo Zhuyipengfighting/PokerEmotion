@@ -1,0 +1,13 @@
+syntax = "proto3";
+package aiemtion;
+service AiGuideService {
+  rpc ChatStream (stream UserInput) returns (stream AIResponse);
+}
+message UserInput {
+  string session_id = 1;
+  string input = 2;
+  string emotion = 3;
+}
+message AIResponse {
+  string output = 1;
+}
