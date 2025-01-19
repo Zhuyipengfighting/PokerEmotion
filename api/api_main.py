@@ -1,8 +1,12 @@
+# Author: Taoismimmortal
+# Time: 2024/1/6
+# Title: FastAPI about AI
+
 from fastapi import FastAPI, Request
 from fastapi.responses import StreamingResponse, JSONResponse
 from pydantic import BaseModel
 from typing import Optional
-from core.emotion_2 import AiGuide, UserInput
+from core.emotion import AiGuide, UserInput
 import asyncio
 
 app = FastAPI()

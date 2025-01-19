@@ -1,6 +1,6 @@
 import grpc
 from concurrent import futures
-from core.emotion_2 import AiGuide, UserInput
+from core.emotion import AiGuide, UserInput
 from gRPC.pb import ai_pb2, ai_pb2_grpc
 
 
