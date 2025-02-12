@@ -24,23 +24,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x08\x61i.proto\x12\x02\x61i\"?\n\tUserInput\x12\x12\n\nsession_id\x18\x01 \x01(\t\x12\x1e\n\x05input\x18\x02 \x03(\x0b\x32\x0f.ai.EmotionData\"}\n\x0b\x45motionData\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12/\n\x08\x65motions\x18\x02 \x03(\x0b\x32\x1d.ai.EmotionData.EmotionsEntry\x1a/\n\rEmotionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01\".\n\x08\x41IOutput\x12\x12\n\nsession_id\x18\x01 \x01(\t\x12\x0e\n\x06report\x18\x02 \x01(\t2C\n\x0e\x41iGuideService\x12\x31\n\x12GetEmotionalReport\x12\r.ai.UserInput\x1a\x0c.ai.AIOutputb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x08\x61i.proto\x12\x02\x61i\"\x85\x01\n\x0b\x45motionData\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x14\n\x0cmain_emotion\x18\x02 \x01(\t\x12\x18\n\x10main_class_ratio\x18\x03 \x01(\x01\x12\x19\n\x11secondary_emotion\x18\x04 \x01(\t\x12\x1d\n\x15secondary_class_ratio\x18\x05 \x01(\x01\"*\n\tUserInput\x12\x1d\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x0f.ai.EmotionData\"\x1a\n\x08\x41IOutput\x12\x0e\n\x06report\x18\x01 \x01(\t2?\n\x0e\x41iGuideService\x12-\n\x0eGenerateReport\x12\r.ai.UserInput\x1a\x0c.ai.AIOutputb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'ai_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_EMOTIONDATA_EMOTIONSENTRY']._loaded_options = None
-  _globals['_EMOTIONDATA_EMOTIONSENTRY']._serialized_options = b'8\001'
-  _globals['_USERINPUT']._serialized_start=16
-  _globals['_USERINPUT']._serialized_end=79
-  _globals['_EMOTIONDATA']._serialized_start=81
-  _globals['_EMOTIONDATA']._serialized_end=206
-  _globals['_EMOTIONDATA_EMOTIONSENTRY']._serialized_start=159
-  _globals['_EMOTIONDATA_EMOTIONSENTRY']._serialized_end=206
-  _globals['_AIOUTPUT']._serialized_start=208
-  _globals['_AIOUTPUT']._serialized_end=254
-  _globals['_AIGUIDESERVICE']._serialized_start=256
-  _globals['_AIGUIDESERVICE']._serialized_end=323
+  _globals['_EMOTIONDATA']._serialized_start=17
+  _globals['_EMOTIONDATA']._serialized_end=150
+  _globals['_USERINPUT']._serialized_start=152
+  _globals['_USERINPUT']._serialized_end=194
+  _globals['_AIOUTPUT']._serialized_start=196
+  _globals['_AIOUTPUT']._serialized_end=222
+  _globals['_AIGUIDESERVICE']._serialized_start=224
+  _globals['_AIGUIDESERVICE']._serialized_end=287
 # @@protoc_insertion_point(module_scope)

@@ -1,17 +1,27 @@
 syntax = "proto3";
+
 package ai;
-message UserInput {
-  string session_id = 1;
-  repeated EmotionData input = 2;
+
+// 服务定义：提供生成情绪报告的接口
+service AiGuideService {
+  rpc GenerateReport (UserInput) returns (AIOutput);
 }
+
+// 单条情绪数据
 message EmotionData {
   string date = 1;
-  map<string, float> emotions = 2;
+  string main_emotion = 2;
+  double main_class_ratio = 3;
+  string secondary_emotion = 4;
+  double secondary_class_ratio = 5;
 }
+
+// 用户输入，包含多条情绪数据
+message UserInput {
+  repeated EmotionData data = 1;
+}
+
+// AI 返回的报告
 message AIOutput {
-  string session_id = 1;
-  string report = 2;
-}
-service AiGuideService {
-  rpc GetEmotionalReport (UserInput) returns (AIOutput);
+  string report = 1;
 }

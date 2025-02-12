@@ -3,7 +3,8 @@
 import grpc
 import warnings
 
-from gRPC.pb import ai_pb2 as ai__pb2
+from . import ai_pb2 as ai__pb2
+
 
 GRPC_GENERATED_VERSION = '1.69.0'
 GRPC_VERSION = grpc.__version__
@@ -26,7 +27,8 @@ if _version_not_supported:
 
 
 class AiGuideServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """服务定义：提供生成情绪报告的接口
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -34,17 +36,18 @@ class AiGuideServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetEmotionalReport = channel.unary_unary(
-                '/ai.AiGuideService/GetEmotionalReport',
+        self.GenerateReport = channel.unary_unary(
+                '/ai.AiGuideService/GenerateReport',
                 request_serializer=ai__pb2.UserInput.SerializeToString,
                 response_deserializer=ai__pb2.AIOutput.FromString,
                 _registered_method=True)
 
 
 class AiGuideServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """服务定义：提供生成情绪报告的接口
+    """
 
-    def GetEmotionalReport(self, request, context):
+    def GenerateReport(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -53,8 +56,8 @@ class AiGuideServiceServicer(object):
 
 def add_AiGuideServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetEmotionalReport': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetEmotionalReport,
+            'GenerateReport': grpc.unary_unary_rpc_method_handler(
+                    servicer.GenerateReport,
                     request_deserializer=ai__pb2.UserInput.FromString,
                     response_serializer=ai__pb2.AIOutput.SerializeToString,
             ),
@@ -67,10 +70,11 @@ def add_AiGuideServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class AiGuideService(object):
-    """Missing associated documentation comment in .proto file."""
+    """服务定义：提供生成情绪报告的接口
+    """
 
     @staticmethod
-    def GetEmotionalReport(request,
+    def GenerateReport(request,
             target,
             options=(),
             channel_credentials=None,
@@ -83,7 +87,7 @@ class AiGuideService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/ai.AiGuideService/GetEmotionalReport',
+            '/ai.AiGuideService/GenerateReport',
             ai__pb2.UserInput.SerializeToString,
             ai__pb2.AIOutput.FromString,
             options,
