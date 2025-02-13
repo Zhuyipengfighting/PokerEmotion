@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:color="#FF9800"/> <!-- 点击时的颜色 -->
+    <item android:state_focused="true" android:color="#FF9800"/> <!-- 聚焦时的颜色 -->
+    <item android:state_selected="true" android:color="#FF9800"/> <!-- 选中时的颜色 -->
+    <item android:color="#808080"/> <!-- 默认颜色 -->
+</selector>

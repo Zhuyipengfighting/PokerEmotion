@@ -1,37 +1,141 @@
 package com.example.pokeremotionapplication;
 
+
+import android.content.Intent;
+import android.graphics.Color;
+
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.pokeremotionapplication.databinding.ActivityMainBinding;
+import com.example.pokeremotionapplication.ui.chat.ChatActivity;
+import com.example.pokeremotionapplication.ui.home.HomeFragment;
+import com.example.pokeremotionapplication.ui.love.LoveFragment;
+import com.example.pokeremotionapplication.ui.my.MyFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    //定义Fragment列表用于切换
+    List<Fragment> fragmentList;
+
+    //定义底部导航栏用于切换
+    BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        // 初始化
+        init();
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        // 底部导航栏页面切换
+        setRouter();
+
+    }
+
+    // 初始化
+    public void init(){
+        // 隐藏头
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) actionBar.hide();
+
+        // 改变顶部状态栏背景
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.TRANSPARENT);
+
+        changeStatusBarTextColor(window , true);
+    }
+
+    // 更改顶部状态栏的文字颜色
+    public void changeStatusBarTextColor(@NonNull Window window, boolean isBlack) {
+        View decor = window.getDecorView();
+        int flags = 0;
+        if (isBlack) {
+            //更改文字颜色为深黑色
+            flags = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+        }
+        else {
+            //更改文字颜色为浅色
+            flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+        }
+        decor.setSystemUiVisibility(flags);
+    }
+
+    // 显示fragment
+    public void showFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        // 替换Fragment
+        fragmentTransaction.replace(R.id.Fragment,fragment);
+        // 提交
+        fragmentTransaction.commit();
+    }
+
+    // 实现底部导航栏切换页面
+    private void setRouter() {
+        //初始化fragmentList
+        fragmentList = new ArrayList<>();
+        fragmentList.add(new HomeFragment());
+        fragmentList.add(new LoveFragment());
+        fragmentList.add(new MyFragment());
+        //默认显示第一个首页fragment
+        showFragment(fragmentList.get(0));
+        //找到底部导航栏id
+        bottomNavigationView = findViewById(R.id.Bottom_menu_view);
+        //底部导航栏点击时触发
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.menu_home) {
+                    // 显示首页
+                    showFragment(fragmentList.get(0));
+                } else if (item.getItemId() == R.id.menu_chat) {
+                    // 显示聊天页面
+                    // showFragment(fragmentList.get(1));
+
+                    Intent intent = new Intent(MainActivity.this , ChatActivity.class);
+                    startActivity(intent);
+
+                    // 延迟设置首页为选中状态
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bottomNavigationView.setSelectedItemId(R.id.menu_home);
+                        }
+                    }, 500); // 延迟 500 毫秒
+
+                } else if (item.getItemId() == R.id.menu_love) {
+                    // 显示情绪报告页面
+                    showFragment(fragmentList.get(1));
+                } else if (item.getItemId() == R.id.menu_my) {
+                    // 显示个人中心页面
+                    showFragment(fragmentList.get(2));
+                }
+                return true;
+            }
+        });
+
     }
 
 }
+

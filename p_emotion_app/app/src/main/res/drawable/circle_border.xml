@@ -1,0 +1,20 @@
+<layer-list>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+            <solid android:color="#00000000"/> <!-- 填充颜色设置为透明 -->
+            <!-- 边框宽度 -->
+            <stroke
+                android:width="2dp"
+                android:color="@color/dove_gray"/> <!-- 边框颜色设置 -->
+
+            <padding
+                android:left="8dp"
+                android:right="8dp"
+                android:bottom="8dp"
+                android:top="8dp"/>
+
+        </shape>
+    </item>
+
+</layer-list>
