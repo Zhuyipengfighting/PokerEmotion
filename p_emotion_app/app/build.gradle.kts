@@ -1,6 +1,10 @@
+
 plugins {
     alias(libs.plugins.android.application)
+    id("com.chaquo.python")
 }
+
+
 
 android {
     namespace = "com.example.pokeremotionapplication"
@@ -14,6 +18,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters += listOf("arm64-v8a", "x86_64")
+        }
+
     }
 
     buildTypes {
@@ -24,6 +33,11 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        getByName("release") {
+            isMinifyEnabled = false
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -31,6 +45,22 @@ android {
     }
     buildFeatures {
         viewBinding = true
+    }
+    buildToolsVersion = "35.0.0"
+
+    chaquopy {
+
+        defaultConfig {
+            buildPython("C:/Python3.11.9/python.exe")
+
+            pip {
+                install("-r" , "src/main/python/requirements.txt")
+            }
+
+            pyc {
+                src = false
+            }
+        }
     }
 }
 
