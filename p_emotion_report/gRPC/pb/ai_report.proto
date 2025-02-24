@@ -3,7 +3,7 @@ syntax = "proto3";
 package ai;
 
 // 服务定义：提供生成情绪报告的接口
-service AiGuideService {
+service EmotionAnalyticsService {
   rpc GenerateReport (UserInput) returns (AIOutput);
 }
 

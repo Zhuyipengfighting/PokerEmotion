@@ -3,8 +3,7 @@
 import grpc
 import warnings
 
-from . import ai_pb2 as ai__pb2
-
+import ai_report_pb2 as ai__report__pb2
 
 GRPC_GENERATED_VERSION = '1.69.0'
 GRPC_VERSION = grpc.__version__
@@ -19,14 +18,14 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in ai_pb2_grpc.py depends on'
+        + f' but the generated code in ai_report_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
     )
 
 
-class AiGuideServiceStub(object):
+class EmotionAnalyticsServiceStub(object):
     """服务定义：提供生成情绪报告的接口
     """
 
@@ -37,13 +36,13 @@ class AiGuideServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GenerateReport = channel.unary_unary(
-                '/ai.AiGuideService/GenerateReport',
-                request_serializer=ai__pb2.UserInput.SerializeToString,
-                response_deserializer=ai__pb2.AIOutput.FromString,
+                '/ai.EmotionAnalyticsService/GenerateReport',
+                request_serializer=ai__report__pb2.UserInput.SerializeToString,
+                response_deserializer=ai__report__pb2.AIOutput.FromString,
                 _registered_method=True)
 
 
-class AiGuideServiceServicer(object):
+class EmotionAnalyticsServiceServicer(object):
     """服务定义：提供生成情绪报告的接口
     """
 
@@ -54,22 +53,22 @@ class AiGuideServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_AiGuideServiceServicer_to_server(servicer, server):
+def add_EmotionAnalyticsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GenerateReport': grpc.unary_unary_rpc_method_handler(
                     servicer.GenerateReport,
-                    request_deserializer=ai__pb2.UserInput.FromString,
-                    response_serializer=ai__pb2.AIOutput.SerializeToString,
+                    request_deserializer=ai__report__pb2.UserInput.FromString,
+                    response_serializer=ai__report__pb2.AIOutput.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'ai.AiGuideService', rpc_method_handlers)
+            'ai.EmotionAnalyticsService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('ai.AiGuideService', rpc_method_handlers)
+    server.add_registered_method_handlers('ai.EmotionAnalyticsService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class AiGuideService(object):
+class EmotionAnalyticsService(object):
     """服务定义：提供生成情绪报告的接口
     """
 
@@ -87,9 +86,9 @@ class AiGuideService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/ai.AiGuideService/GenerateReport',
-            ai__pb2.UserInput.SerializeToString,
-            ai__pb2.AIOutput.FromString,
+            '/ai.EmotionAnalyticsService/GenerateReport',
+            ai__report__pb2.UserInput.SerializeToString,
+            ai__report__pb2.AIOutput.FromString,
             options,
             channel_credentials,
             insecure,
