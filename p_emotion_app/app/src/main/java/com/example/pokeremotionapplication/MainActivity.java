@@ -2,6 +2,7 @@ package com.example.pokeremotionapplication;
 
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.chaquo.python.Python;
 import com.example.pokeremotionapplication.ui.chat.ChatActivity;
 import com.example.pokeremotionapplication.ui.home.HomeFragment;
 import com.example.pokeremotionapplication.ui.love.LoveFragment;
@@ -24,6 +26,9 @@ import com.example.pokeremotionapplication.ui.my.MyFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 底部导航栏页面切换
         setRouter();
+
 
     }
 

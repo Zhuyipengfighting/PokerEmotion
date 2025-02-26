@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/chat_head_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/chat_head_img_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <!-- 辅助线 -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_half"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <View
+        android:id="@+id/chat_view"
+        android:layout_width="6dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toEndOf="@+id/chat_head_img"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/chat_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/chat_view_in"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline_half"
+        android:text="时间" />
+
+    <TextView
+        android:id="@+id/chat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_bg"
+        android:breakStrategy="simple"
+        android:ellipsize="none"
+        android:gravity="start|center_vertical"
+        android:maxLines="100"
+        android:text="这是一段短文本"
+        app:layout_constraintEnd_toStartOf="@+id/chat_view_in"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@+id/chat_view"
+        app:layout_constraintTop_toTopOf="@+id/guideline_half" />
+
+
+
+    <View
+        android:id="@+id/chat_view_in"
+        android:layout_width="6dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@+id/chat_head_img_in"
+        android:background="@color/white"
+        android:visibility="invisible"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

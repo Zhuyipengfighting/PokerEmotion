@@ -17,6 +17,7 @@ import com.example.pokeremotionapplication.data.ChatDataBaseHelper;
 public class ChatActivity extends AppCompatActivity {
 
     private ChatDataBaseHelper dataBaseHelper;
+    boolean isHorn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,22 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        // 音量键
+        ImageView born = findViewById(R.id.chat_horn);
+
+        born.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isHorn){
+                    born.setImageResource(R.drawable.horn_close);
+                    isHorn = true;
+                }else {
+                    born.setImageResource(R.drawable.horn_open);
+                    isHorn = false;
+                }
             }
         });
 
