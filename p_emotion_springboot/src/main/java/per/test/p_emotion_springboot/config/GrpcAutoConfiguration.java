@@ -22,7 +22,7 @@ public class GrpcAutoConfiguration {
     @Value("${grpc.server.host:localhost}")
     private String reportHost;
 
-    @Value("${grpc.report.port:50052}") // 假设报告服务使用不同端口
+    @Value("${grpc.report.port:50052}")
     private int reportPort;
 
     @Bean

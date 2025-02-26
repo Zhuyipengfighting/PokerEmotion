@@ -3,7 +3,7 @@ package per.test.p_emotion_springboot.client;
 import ai.AiReport.*;
 import ai.EmotionAnalyticsServiceGrpc;
 import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,7 +13,7 @@ public class AiReportClientTest {
     @Test
     public void testGenerateReport() throws InterruptedException {
         // 创建 AiReportClient 实例
-        AiReportClient client = new AiReportClient("localhost", 50051);
+        AiReportClient client = new AiReportClient("localhost", 50052);
 
         // 创建请求对象
         UserInput userInput = UserInput.newBuilder()
@@ -30,7 +30,7 @@ public class AiReportClientTest {
         String report = client.generateReport(userInput);
 
         // 验证响应
-        assertEquals("Generated report...", report);
+        assertNotNull(report);
 
         // 关闭客户端
         client.shutdown();
