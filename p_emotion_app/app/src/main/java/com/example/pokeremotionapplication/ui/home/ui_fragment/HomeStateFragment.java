@@ -1,9 +1,13 @@
 package com.example.pokeremotionapplication.ui.home.ui_fragment;
 
 // home页面中的设备状态页面
+import static android.content.ContentValues.TAG;
+
+import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,18 +23,28 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
 import com.example.pokeremotionapplication.R;
+import com.example.pokeremotionapplication.data.pojo.DataPoint;
+import com.example.pokeremotionapplication.util.CSVUtil;
+import com.example.pokeremotionapplication.util.DataParser;
+import com.example.pokeremotionapplication.util.JsonFileUtils;
+import com.example.pokeremotionapplication.util.JsonUtil;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeStateFragment extends Fragment {
 
     private LineChart lineChart;
+    private List<String> dataPaths = new ArrayList<>();
+    private List<String[]> DATA = new ArrayList<>();
+    private List<DataPoint> dataPoints;
+
 
     @Nullable
     @Override
@@ -41,8 +55,32 @@ public class HomeStateFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         getCircleImg(view);
+
+        // 读取CSV文件
+        String fileName = "data/data (1).csv";
+        List<DataPoint> dataPoints = CSVUtil.readCSV(getContext(), fileName);
+
+        // 将List<DataPoint>转换为JSON字符串
+        String jsonData = dataPoints.toString();
+
+        // 获取Python模块
+        Python py = Python.getInstance();
+        PyObject pyObject = py.getModule("data");
+
+        // 调用数据预处理方法
+        PyObject result_pre =  pyObject.callAttr("preprocess_data" , jsonData);
+
+        String resultStr = result_pre.toString();
+        Log.d("PythonResult" , resultStr);
+
+        // 调用情绪分类方法
+        PyObject result_cla = pyObject.callAttr("preprocess_and_classify_emotion" , jsonData);
+
+
+        String resultCla = result_cla.toString();
+        Log.d("PythonResult", resultCla);
+
 
         // 绑定折线图
         lineChart = view.findViewById(R.id.home_state_lineChart);
@@ -56,17 +94,23 @@ public class HomeStateFragment extends Fragment {
         // 没有数据的样式
         lineChart.setNoDataText("请佩戴设备");
 
-        // 假数据
-
-
-
-
 
     }
 
 
+    // 得到假数据
+    public List<DataPoint> initDataPaths() {
+        String jsonData = JsonFileUtils.loadJSONFromAsset(requireContext(), "data.json");
+        return DataParser.parseData(jsonData);
+    }
+
+
+    //
+
+
+
     // home_state页面中的脑机接口图片
-    public void getCircleImg(View view){
+    public void getCircleImg(View view) {
         // 绑定图片位置
         ImageView imageView = view.findViewById(R.id.circular_image_view);
 
@@ -100,6 +144,7 @@ public class HomeStateFragment extends Fragment {
                 });
 
     }
+
 }
 
 
