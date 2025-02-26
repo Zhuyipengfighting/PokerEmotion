@@ -1,9 +1,7 @@
-
 plugins {
     alias(libs.plugins.android.application)
-    id("com.chaquo.python")
+    alias(libs.plugins.chaquo.python)
 }
-
 
 
 android {
@@ -20,9 +18,22 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
-            abiFilters += listOf("arm64-v8a", "x86_64")
+            //noinspection ChromeOsAbiSupport
+            abiFilters += listOf("x86_64")
         }
 
+        chaquopy {
+            defaultConfig {
+                version = "3.8"
+                buildPython("C:/Python3.8/python.exe")
+
+                pip {
+                    install("contourpy-1.0.7-0-cp313-cp313-android_24_x86_64.whl")
+                    install("numpy-1.19.5-0-cp38-cp38-android_21_x86_64.whl")
+                    install("-r" , "C:/Project/PokerEmotion/p_emotion_app/app/src/main/python/requirements.txt")
+                }
+            }
+        }
     }
 
     buildTypes {
@@ -47,21 +58,6 @@ android {
         viewBinding = true
     }
     buildToolsVersion = "35.0.0"
-
-    chaquopy {
-
-        defaultConfig {
-            buildPython("C:/Python3.11.9/python.exe")
-
-            pip {
-                install("-r" , "src/main/python/requirements.txt")
-            }
-
-            pyc {
-                src = false
-            }
-        }
-    }
 }
 
 dependencies {
@@ -76,6 +72,8 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.glide)
     implementation(files("src\\state\\MPAndroidChart-v3.0.1.jar"))
+    implementation(libs.gson)
+    implementation(libs.opencsv)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
