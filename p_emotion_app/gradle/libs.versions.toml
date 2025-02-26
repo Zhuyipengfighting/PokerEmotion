@@ -12,10 +12,8 @@ navigationFragment = "2.6.0"
 navigationUi = "2.6.0"
 activity = "1.8.0"
 glide = "5.0.0-rc01"
-mpandroidchart = "v3.4.1"
-mpandroidchartVersion = "v3.0.3"
-githubMpandroidchart = "v3.1.0"
-githubMpandroidchartVersion = "v3.1.0-alpha"
+gson = "2.12.1"
+opencsv = "5.10"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -30,11 +28,9 @@ navigation-fragment = { group = "androidx.navigation", name = "navigation-fragme
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
-mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mpandroidchart" }
-philjay-mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mpandroidchartVersion" }
-github-mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "githubMpandroidchart" }
-com-github-philjay-mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "githubMpandroidchartVersion" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+opencsv = { group = "com.opencsv", name = "opencsv", version.ref = "opencsv" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-
+chaquo-python = {id = 'com.chaquo.python', version = "16.0.0"}
