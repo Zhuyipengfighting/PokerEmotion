@@ -14,6 +14,8 @@ activity = "1.8.0"
 glide = "5.0.0-rc01"
 gson = "2.12.1"
 opencsv = "5.10"
+jacksonAnnotations = "2.18.2"
+jacksonDatabind = "2.18.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -30,6 +32,8 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 opencsv = { group = "com.opencsv", name = "opencsv", version.ref = "opencsv" }
+jackson-annotations = { group = "com.fasterxml.jackson.core", name = "jackson-annotations", version.ref = "jacksonAnnotations" }
+jackson-databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jacksonDatabind" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
