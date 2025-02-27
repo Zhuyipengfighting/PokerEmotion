@@ -1,22 +1,25 @@
 import grpc
 from concurrent import futures
 import time
-from gRPC.pb import ai_pb2, ai_pb2_grpc
 from humanfriendly.terminal import output
 from pydantic import BaseModel
 from typing import List, Dict, Union
 from core.emotion_report import AiGuide
+
+
+from gRPC.pb import ai_report_pb2, ai_report_pb2_grpc
+
 class UserInput(BaseModel):
     input: List[Dict[str, Union[str, float]]]
 
 class AIOutput(BaseModel):
     report: str
+
 aiguide = AiGuide(streams=True)
 
 # 实现 gRPC 服务
-class AiGuideServiceServicer(ai_pb2_grpc.AiGuideServiceServicer):
+class EmotionAnalyticsServiceServicer(ai_report_pb2_grpc.EmotionAnalyticsServiceServicer):
     def GenerateReport(self, request, context):
-
         input_data = []
         for data in request.data:
             input_data.append({
@@ -28,14 +31,14 @@ class AiGuideServiceServicer(ai_pb2_grpc.AiGuideServiceServicer):
             })
         user_input = UserInput(input=input_data)
         response = aiguide.invoke_with_history(user_input)
-        return ai_pb2.AIOutput(report=response.report)
+        return ai_report_pb2.AIOutput(report=response.report)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    ai_pb2_grpc.add_AiGuideServiceServicer_to_server(AiGuideServiceServicer(), server)
-    server.add_insecure_port('[::]:50051')
+    ai_report_pb2_grpc.add_EmotionAnalyticsServiceServicer_to_server(EmotionAnalyticsServiceServicer(), server)
+    server.add_insecure_port('[::]:50050')
     server.start()
-    print("gRPC 服务已启动，监听端口 50051")
+    print("gRPC 服务已启动，监听端口 50050")
     try:
         while True:
             time.sleep(86400)  # 保持服务运行

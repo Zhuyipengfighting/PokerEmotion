@@ -4,22 +4,81 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98c6723a-7d4e-4fee-8377-42ff30fce2af" name="更改" comment="" />
+    <list default="true" id="98c6723a-7d4e-4fee-8377-42ff30fce2af" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_report/gRPC/pb/ai_report.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_report/gRPC/pb/ai_report_pb2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/java/per/test/p_emotion_springboot/client/AiGrpcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/java/per/test/p_emotion_springboot/client/AiReportClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/java/per/test/p_emotion_springboot/config/GrpcAutoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/java/per/test/p_emotion_springboot/controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/java/per/test/p_emotion_springboot/controller/EmotionAnalyticsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/java/per/test/p_emotion_springboot/gRPC.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/proto/ai.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/test/java/per/test/p_emotion_springboot/client/AboutTest.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/test/java/per/test/p_emotion_springboot/client/AiGrpcClientTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p_emotion_springboot/src/test/java/per/test/p_emotion_springboot/client/AiReportClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PokerEmotion.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PokerEmotion.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p_emotion_report/gRPC/pb/ai.proto" beforeDir="false" afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/proto/ai_report.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p_emotion_report/gRPC/pb/ai_pb2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p_emotion_report/gRPC/pb/ai_pb2_grpc.py" beforeDir="false" afterPath="$PROJECT_DIR$/p_emotion_report/gRPC/pb/ai_report_pb2_grpc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p_emotion_report/gRPC/server/serve.py" beforeDir="false" afterPath="$PROJECT_DIR$/p_emotion_report/gRPC/server/serve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p_emotion_springboot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/p_emotion_springboot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p_emotion_springboot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/p_emotion_springboot/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Taoismimmortal&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Zhuyipengfighting/PokerEmotion.git&quot;,
+    &quot;accountId&quot;: &quot;cff4bcb6-dc35-4b3e-8891-eda7d31c9055&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="D:\maven\apache-maven-3.9.9" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2s5iPW9MI7eRXF2IKkRjrQNXckB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,32 +86,49 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.serve.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "zyc",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/desktop/giteeclone/PokerEmotion/p_emotion_report/gRPC/server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\desktop\giteeclone\PokerEmotion\p_emotion_report\gRPC\server" />
+      <recent name="D:\desktop\giteeclone\PokerEmotion\p_emotion_report\gRPC\pb" />
+      <recent name="D:\desktop\giteeclone\PokerEmotion\p_emotion_springboot\src\main\proto" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="PokerEmotion" />
+    <configuration name="PEmotionSpringbootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="p_emotion_springboot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="per.test.p_emotion_springboot.PEmotionSpringbootApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="PokerEmotion" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -63,10 +139,26 @@
       <option name="presentableId" value="Default" />
       <updated>1737751814537</updated>
       <workItem from="1737751817399" duration="606000" />
+      <workItem from="1740043376770" duration="13000" />
+      <workItem from="1740048736016" duration="3677000" />
+      <workItem from="1740052447088" duration="598000" />
+      <workItem from="1740053059492" duration="6841000" />
+      <workItem from="1740060005517" duration="267000" />
+      <workItem from="1740136595298" duration="8482000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/github_md$serve.coverage" NAME="serve 覆盖结果" MODIFIED="1740060109983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/p_emotion_AiChat/gRPC/server" />
   </component>
 </project>

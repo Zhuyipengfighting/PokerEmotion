@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/PokerEmotion.iml" filepath="$PROJECT_DIR$/.idea/PokerEmotion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p_emotion_springboot/p_emotion_springboot.iml" filepath="$PROJECT_DIR$/p_emotion_springboot/p_emotion_springboot.iml" />
+    </modules>
+  </component>
+</project>
