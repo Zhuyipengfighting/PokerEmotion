@@ -19,7 +19,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.chaquo.python.Python;
+import com.example.pokeremotionapplication.data.DataReadingService;
 import com.example.pokeremotionapplication.ui.chat.ChatActivity;
+import com.example.pokeremotionapplication.ui.chat.ChatFragment;
 import com.example.pokeremotionapplication.ui.home.HomeFragment;
 import com.example.pokeremotionapplication.ui.love.LoveFragment;
 import com.example.pokeremotionapplication.ui.my.MyFragment;
@@ -52,7 +54,15 @@ public class MainActivity extends AppCompatActivity {
         // 底部导航栏页面切换
         setRouter();
 
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // 停止数据读取服务
+        Intent serviceIntent = new Intent(this, DataReadingService.class);
+        stopService(serviceIntent);
     }
 
     // 初始化
@@ -70,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT);
 
         changeStatusBarTextColor(window , true);
+
+        // 启动数据读取服务
+        Intent serviceIntent = new Intent(this, DataReadingService.class);
+        startService(serviceIntent);
     }
 
     // 更改顶部状态栏的文字颜色
@@ -101,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         //初始化fragmentList
         fragmentList = new ArrayList<>();
         fragmentList.add(new HomeFragment());
+        fragmentList.add(new ChatFragment());
         fragmentList.add(new LoveFragment());
         fragmentList.add(new MyFragment());
         //默认显示第一个首页fragment
@@ -115,27 +130,21 @@ public class MainActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.menu_home) {
                     // 显示首页
                     showFragment(fragmentList.get(0));
+                    bottomNavigationView.setVisibility(View.VISIBLE);
                 } else if (item.getItemId() == R.id.menu_chat) {
                     // 显示聊天页面
-                    // showFragment(fragmentList.get(1));
-
-                    Intent intent = new Intent(MainActivity.this , ChatActivity.class);
-                    startActivity(intent);
-
-                    // 延迟设置首页为选中状态
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bottomNavigationView.setSelectedItemId(R.id.menu_home);
-                        }
-                    }, 500); // 延迟 500 毫秒
+                    showFragment(fragmentList.get(1));
+                    // 让底部导航栏消失
+                    bottomNavigationView.setVisibility(View.GONE);
 
                 } else if (item.getItemId() == R.id.menu_love) {
                     // 显示情绪报告页面
-                    showFragment(fragmentList.get(1));
+                    showFragment(fragmentList.get(2));
+                    bottomNavigationView.setVisibility(View.VISIBLE);
                 } else if (item.getItemId() == R.id.menu_my) {
                     // 显示个人中心页面
-                    showFragment(fragmentList.get(2));
+                    showFragment(fragmentList.get(3));
+                    bottomNavigationView.setVisibility(View.VISIBLE);
                 }
                 return true;
             }
