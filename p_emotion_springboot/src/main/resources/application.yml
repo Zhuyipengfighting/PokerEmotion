@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: p_emotion_springboot
+
+  #redis
+  #mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/Test01
+    username: root
+    password: Zyp886554.
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+grpc:
+  server:
+    host: localhost
+    port: 50051
+  report:
+    host: localhost
+    port: 50050
+
+
+mybatis:
+  configuration:
+    #下划线转驼峰
+    map-underscore-to-camel-case: true
+
+server:
+  port: 8085
