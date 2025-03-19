@@ -142,9 +142,15 @@ public class DataReadingService extends Service {
         // 调用数据预处理方法
         PyObject result_pre =  pyObject.callAttr("preprocess_data" , jsonData);
 
-        String resultStr = result_pre.toString();
-        // Log.d("PythonResult" , resultStr);
+        String resultStr_pre = result_pre.toString();
+        // Log.d("PythonResult" , resultStr_pre);
 
-        return ResultStr.readStr(resultStr);
+        PyObject result_emotion = pyObject.callAttr("preprocess_and_classify_emotion" , jsonData);
+
+        String resultStr_emotion = result_emotion.toString();
+
+        Log.d("PythonEmotion" , resultStr_emotion);
+
+        return ResultStr.readStr(resultStr_pre);
     }
 }
