@@ -11,15 +11,15 @@ import androidx.annotation.Nullable;
 
 public class ChatDataBaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "chat.db";
-    private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_CHAT = "chat_message";
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_USER_NAME = "user_name";
-    private static final String COLUMN_USER_NUMBER = "user_number";
-    private static final String COLUMN_MESSAGE = "message";
-    private static final String COLUMN_TIMESTAMP = "timestamp";
-    private static final String TABLE_CREATE =
+    public static final String DATABASE_NAME = "pk.db";                  // 数据库名字
+    public static final int DATABASE_VERSION = 1;                        // 数据库版本
+    public static final String TABLE_CHAT = "chat";                      // 表名
+    public static final String COLUMN_ID = "id";                         // 会话顺序
+    public static final String COLUMN_USER_NAME = "user_name";           // 用户名字
+    public static final String COLUMN_USER_NUMBER = "user_number";       // 用户账号
+    public static final String COLUMN_MESSAGE = "message";               // 会话具体消息
+    public static final String COLUMN_TIMESTAMP = "timestamp";           // 会话时间
+    public static final String CREATE_CHAT_TABLE =
             "CREATE TABLE " + TABLE_CHAT + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_USER_NAME + " TEXT, " +
@@ -36,7 +36,7 @@ public class ChatDataBaseHelper extends SQLiteOpenHelper {
     // 只执行一次
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(TABLE_CREATE);
+        db.execSQL(CREATE_CHAT_TABLE);
     }
 
     @Override

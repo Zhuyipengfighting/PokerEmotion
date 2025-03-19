@@ -88,6 +88,7 @@
             android:contentDescription="相册"/>
 
         <EditText
+            android:id="@+id/chat_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
