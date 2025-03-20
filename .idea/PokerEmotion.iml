@@ -19,6 +19,9 @@
       <list>
         <option value="$MODULE_DIR$/p_emotion_report/core" />
         <option value="$MODULE_DIR$/p_emotion_report/gRPC" />
+        <option value="$MODULE_DIR$/p_emotion_AiChat/api" />
+        <option value="$MODULE_DIR$/p_emotion_AiChat/core" />
+        <option value="$MODULE_DIR$/p_emotion_AiChat/gRPC" />
       </list>
     </option>
   </component>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Chat</title>
+</head>
+<body>
+<h1>AI Chat</h1>
+<input type="text" id="sessionId" placeholder="Session ID">
+<input type="text" id="input" placeholder="Your message">
+<input type="text" id="emotion" placeholder="Emotion">
+<button onclick="sendMessage()">Send</button>
+<div id="messages"></div>
+
+<script>
+    const messagesDiv = document.getElementById('messages');
+    const eventSource = new EventSource('/api/chat/stream?sessionId=' + document.getElementById('sessionId').value);
+
+    eventSource.onmessage = function(event) {
+        const message = document.createElement('p');
+        message.textContent = event.data;
+        messagesDiv.appendChild(message);
+    };
+
+    function sendMessage() {
+        const sessionId = document.getElementById('sessionId').value;
+        const input = document.getElementById('input').value;
+        const emotion = document.getElementById('emotion').value;
+
+        fetch('/api/chat/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ sessionId, input, emotion })
+        });
+    }
+</script>
+</body>
+</html>
