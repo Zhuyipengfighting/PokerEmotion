@@ -5,8 +5,21 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/p_emotion_AiChat" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/p_emotion_springboot/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/p_emotion_report" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="langchain0.3" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+  <component name="PyNamespacePackagesService">
+    <option name="namespacePackageFolders">
+      <list>
+        <option value="$MODULE_DIR$/p_emotion_report/core" />
+        <option value="$MODULE_DIR$/p_emotion_report/gRPC" />
+      </list>
+    </option>
   </component>
 </module>

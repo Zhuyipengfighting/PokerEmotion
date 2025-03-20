@@ -19,7 +19,7 @@ public class GrpcAutoConfiguration {
         return new AiGrpcClient(host, port);
     }
 
-    @Value("${grpc.server.host:localhost}")
+    @Value("${grpc.report.host:localhost}")
     private String reportHost;
 
     @Value("${grpc.report.port:50050}")

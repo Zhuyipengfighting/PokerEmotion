@@ -5,7 +5,7 @@ from humanfriendly.terminal import output
 from pydantic import BaseModel
 from typing import List, Dict, Union
 from core.emotion_report import AiGuide
-
+from google.protobuf.json_format import Parse
 
 from gRPC.pb import ai_report_pb2, ai_report_pb2_grpc
 
@@ -31,6 +31,9 @@ class EmotionAnalyticsServiceServicer(ai_report_pb2_grpc.EmotionAnalyticsService
             })
         user_input = UserInput(input=input_data)
         response = aiguide.invoke_with_history(user_input)
+
+        # user_input = Parse(request, ai_report_pb2.UserInput())  # JSON 转 Protobuf
+        # response = aiguide.invoke_with_history(user_input)
         return ai_report_pb2.AIOutput(report=response.report)
 
 def serve():

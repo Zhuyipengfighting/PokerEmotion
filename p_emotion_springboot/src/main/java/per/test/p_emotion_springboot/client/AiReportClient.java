@@ -13,17 +13,17 @@ public class AiReportClient {
 
     public AiReportClient(String host, int port) {
         this.channel = ManagedChannelBuilder.forAddress(host, port)
-                .usePlaintext() // 测试环境使用，生产环境需启用TLS
+                .usePlaintext()
                 .build();
         this.blockingStub = EmotionAnalyticsServiceGrpc.newBlockingStub(channel);
     }
 
-    public String generateReport(UserInput request) {
+    public AIOutput generateReport(UserInput request) {
         try {
-            AIOutput response = blockingStub
+            // **直接返回 AIOutput 对象，而不是 String**
+            return blockingStub
                     .withDeadlineAfter(30, TimeUnit.SECONDS)
                     .generateReport(request);
-            return response.getReport();
         } catch (Exception e) {
             throw new RuntimeException("gRPC调用失败: " + e.getMessage(), e);
         }
