@@ -1,14 +1,9 @@
-package com.example.pokeremotionapplication.data;
-
-import static android.content.ContentValues.TAG;
+package com.example.pokeremotionapplication.data.service;
 
 
 import android.app.Service;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
 import android.util.Log;
 
 import androidx.annotation.Nullable;

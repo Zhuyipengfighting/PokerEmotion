@@ -18,7 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.pokeremotionapplication.R;
-import com.example.pokeremotionapplication.data.ChatDataBaseHelper;
+import com.example.pokeremotionapplication.data.dataBase.ChatDataBaseHelper;
 import com.example.pokeremotionapplication.data.pojo.Message;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

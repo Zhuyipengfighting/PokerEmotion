@@ -1,9 +1,9 @@
 package com.example.pokeremotionapplication;
 
-
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 
 import android.os.Bundle;
@@ -11,14 +11,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.pokeremotionapplication.data.DataReadingService;
+import com.example.pokeremotionapplication.data.service.BtMonitorService;
+import com.example.pokeremotionapplication.data.service.DataReadingService;
 import com.example.pokeremotionapplication.ui.chat.ChatFragment;
 import com.example.pokeremotionapplication.ui.home.HomeFragment;
 import com.example.pokeremotionapplication.ui.my.MyFragment;
@@ -31,6 +36,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int REQUEST_ENABLE_BT = 1;
+
+    // 用于动态请求蓝牙权限
+    private static final int REQUEST_BLUETOOTH_PERMISSIONS = 1;
+
+    // 蓝牙适配器
+    private BluetoothAdapter bluetoothAdapter;
+
     //定义Fragment列表用于切换
     List<Fragment> fragmentList;
 
@@ -40,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     // 注册蓝牙监听
     private BtStateReceiver btStateReceiver;
 
+    @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 初始化
+    @RequiresPermission(Manifest.permission.BLUETOOTH_CONNECT)
     public void init(){
         // 隐藏头
         ActionBar actionBar = getSupportActionBar();
@@ -83,14 +98,40 @@ public class MainActivity extends AppCompatActivity {
 
         changeStatusBarTextColor(window , true);
 
+
+        // 检查并请求蓝牙权限
+        if (checkBluetoothPermissions()) {
+            // 权限已授予，启动服务
+            startBluetoothServices();
+
+        } else {
+            // 请求权限
+            requestBluetoothPermissions();
+        }
+
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        // 检查蓝牙状态
+        if (bluetoothAdapter == null) {
+            // 设备不支持蓝牙
+            Toast.makeText(this, "设备不支持蓝牙", Toast.LENGTH_SHORT).show();
+        } else if (!bluetoothAdapter.isEnabled()) {
+            // 蓝牙未打开，请求用户打开蓝牙
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        }
+
+    }
+
+    // 启动蓝牙相关服务
+    private void startBluetoothServices() {
         // 启动数据读取服务
         Intent serviceIntent = new Intent(this, DataReadingService.class);
         startService(serviceIntent);
 
-        // 注册蓝牙监听服务
-        btStateReceiver = new BtStateReceiver();
-        IntentFilter btFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-        registerReceiver(btStateReceiver, btFilter);
+        // 启动蓝牙监控服务
+        Intent btOpenServiceIntent = new Intent(this, BtMonitorService.class);
+        startService(btOpenServiceIntent);
 
     }
 
@@ -153,6 +194,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    // 检查是否具有蓝牙权限
+    private boolean checkBluetoothPermissions() {
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    // 请求蓝牙权限
+    private void requestBluetoothPermissions() {
+        ActivityCompat.requestPermissions(
+                this,
+                new String[]{
+                        Manifest.permission.BLUETOOTH_CONNECT,
+                        Manifest.permission.BLUETOOTH_SCAN
+                },
+                REQUEST_BLUETOOTH_PERMISSIONS
+        );
+    }
+
+    // 处理权限请求结果
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_BLUETOOTH_PERMISSIONS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 权限已授予，启动服务
+                startBluetoothServices();
+            } else {
+                // 权限被拒绝，提示用户
+                Toast.makeText(this, "蓝牙权限被拒绝，无法使用蓝牙功能", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 
