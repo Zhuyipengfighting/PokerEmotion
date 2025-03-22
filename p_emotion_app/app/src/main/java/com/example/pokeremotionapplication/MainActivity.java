@@ -1,12 +1,12 @@
 package com.example.pokeremotionapplication;
 
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import android.content.res.AssetManager;
+import android.content.IntentFilter;
 import android.graphics.Color;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -18,19 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.chaquo.python.Python;
 import com.example.pokeremotionapplication.data.DataReadingService;
-import com.example.pokeremotionapplication.ui.chat.ChatActivity;
 import com.example.pokeremotionapplication.ui.chat.ChatFragment;
 import com.example.pokeremotionapplication.ui.home.HomeFragment;
-import com.example.pokeremotionapplication.ui.love.LoveFragment;
 import com.example.pokeremotionapplication.ui.my.MyFragment;
+import com.example.pokeremotionapplication.util.BtStateReceiver;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     //定义底部导航栏用于切换
     BottomNavigationView bottomNavigationView;
 
+    // 注册蓝牙监听
+    private BtStateReceiver btStateReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
         // 停止数据读取服务
         Intent serviceIntent = new Intent(this, DataReadingService.class);
         stopService(serviceIntent);
+
+        // 注销蓝牙状态监听器
+        if (btStateReceiver != null) {
+            unregisterReceiver(btStateReceiver);
+        }
     }
 
     // 初始化
@@ -84,6 +86,12 @@ public class MainActivity extends AppCompatActivity {
         // 启动数据读取服务
         Intent serviceIntent = new Intent(this, DataReadingService.class);
         startService(serviceIntent);
+
+        // 注册蓝牙监听服务
+        btStateReceiver = new BtStateReceiver();
+        IntentFilter btFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+        registerReceiver(btStateReceiver, btFilter);
+
     }
 
     // 更改顶部状态栏的文字颜色
@@ -146,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 
 }
 

@@ -29,9 +29,13 @@
             android:exported="false"
             android:foregroundServiceType="location|connectedDevice" />
 
-        <activity
-            android:name=".ui.chat.ChatActivity"
-            android:exported="false" />
+        <!--蓝牙监听服务-->
+        <receiver android:name=".util.BtStateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".MainActivity"
