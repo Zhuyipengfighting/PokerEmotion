@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.pokeremotionapplication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.pokeremotionapplication"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -77,6 +77,8 @@ dependencies {
     implementation(libs.opencsv)
     implementation(libs.jackson.databind)
     implementation(libs.cardview)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.fragment)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.3"
+agp = "8.9.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
@@ -17,6 +17,8 @@ opencsv = "5.10"
 jacksonAnnotations = "2.18.2"
 jacksonDatabind = "2.18.2"
 cardview = "1.0.0"
+activityVersion = "1.10.0"
+fragment = "1.6.0-alpha08"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -36,6 +38,8 @@ opencsv = { group = "com.opencsv", name = "opencsv", version.ref = "opencsv" }
 jackson-annotations = { group = "com.fasterxml.jackson.core", name = "jackson-annotations", version.ref = "jacksonAnnotations" }
 jackson-databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jacksonDatabind" }
 cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activityVersion" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
