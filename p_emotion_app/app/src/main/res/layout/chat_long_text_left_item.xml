@@ -12,6 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="头像"
         />
 
     <!-- 辅助线 -->
@@ -20,7 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.5"
+        android:contentDescription="@null"/>
 
     <View
         android:visibility="invisible"
@@ -28,7 +30,8 @@
         android:layout_width="6dp"
         android:layout_height="match_parent"
         app:layout_constraintStart_toEndOf="@+id/chat_head_img"
-        android:background="@color/white"/>
+        android:background="@color/white"
+        android:contentDescription="@null"/>
 
     <TextView
         android:id="@+id/chat_time"
@@ -37,7 +40,8 @@
         android:gravity="center"
         app:layout_constraintStart_toEndOf="@+id/chat_view"
         app:layout_constraintBottom_toBottomOf="@+id/guideline_half"
-        android:text="时间" />
+        android:text="时间"
+        android:contentDescription="时间"/>
 
     <TextView
         android:id="@+id/chat_text"
@@ -52,7 +56,8 @@
         app:layout_constraintEnd_toStartOf="@+id/chat_view_in"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/chat_view"
-        app:layout_constraintTop_toTopOf="@+id/guideline_half" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_half"
+        android:contentDescription="聊天内容"/>
 
     <ImageView
         android:id="@+id/chat_head_img_in"
@@ -63,6 +68,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="invisible"
+        android:contentDescription="@null"
         />
 
     <View
@@ -71,7 +77,8 @@
         android:layout_height="match_parent"
         app:layout_constraintEnd_toStartOf="@+id/chat_head_img_in"
         android:background="@color/white"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:contentDescription="@null"/>
 
 
 

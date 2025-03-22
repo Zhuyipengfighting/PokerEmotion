@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.chat.ChatActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,14 +18,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/arrow_left"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:contentDescription="返回按钮"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/arrow_left"
             android:layout_weight="1"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:contentDescription="@null"/>
 
         <TextView
             android:id="@+id/chat_title"
@@ -44,33 +45,38 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/horn_open"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:contentDescription="喇叭图标"/>
 
         <ImageView
             android:id="@+id/chat_more"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/more"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:contentDescription="更多选项"/>
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/dove_gray"/>
+        android:background="@color/dove_gray"
+        android:contentDescription="@null"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="11"
-        android:background="@color/dove_dove_dove_gray"/>
+        android:background="@color/dove_dove_dove_gray"
+        android:contentDescription="聊天记录"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/dove_gray"/>
+        android:background="@color/dove_gray"
+        android:contentDescription="@null"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,7 +103,7 @@
             android:padding="8dp"
             android:minWidth="100dp"
             android:minHeight="48dp"
-            android:background="@drawable/chat_ed_text_background"/>
+            android:background="@drawable/chat_ed_text_background" />
 
         <ImageButton
             android:id="@+id/chat_send"
