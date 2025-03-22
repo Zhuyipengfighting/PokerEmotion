@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.opencsv)
     implementation(libs.jackson.databind)
+    implementation(libs.cardview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

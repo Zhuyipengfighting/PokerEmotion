@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentList = new ArrayList<>();
         fragmentList.add(new HomeFragment());
         fragmentList.add(new ChatFragment());
-        fragmentList.add(new LoveFragment());
         fragmentList.add(new MyFragment());
         //默认显示第一个首页fragment
         showFragment(fragmentList.get(0));
@@ -131,19 +130,15 @@ public class MainActivity extends AppCompatActivity {
                     // 显示首页
                     showFragment(fragmentList.get(0));
                     bottomNavigationView.setVisibility(View.VISIBLE);
-                } else if (item.getItemId() == R.id.menu_chat) {
+                } else if (item.getItemId() == R.id.menu_love) {
                     // 显示聊天页面
                     showFragment(fragmentList.get(1));
                     // 让底部导航栏消失
                     bottomNavigationView.setVisibility(View.GONE);
 
-                } else if (item.getItemId() == R.id.menu_love) {
-                    // 显示情绪报告页面
-                    showFragment(fragmentList.get(2));
-                    bottomNavigationView.setVisibility(View.VISIBLE);
                 } else if (item.getItemId() == R.id.menu_my) {
                     // 显示个人中心页面
-                    showFragment(fragmentList.get(3));
+                    showFragment(fragmentList.get(2));
                     bottomNavigationView.setVisibility(View.VISIBLE);
                 }
                 return true;

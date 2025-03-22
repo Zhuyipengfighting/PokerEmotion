@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- item android:state_checked="true" android:color="#FFA500" --> <!-- 点击状态的颜色（橙色） -->
-    <item android:state_checked="true" android:color="@color/orange"/>
+    <item android:state_checked="true" android:color="@color/black"/>
     <item android:color="@color/gray" /> <!-- 默认状态的颜色（灰色） -->
 </selector>
